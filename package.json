@@ -1,0 +1,21 @@
+{
+  "name": "ibstore",
+  "version": "1.0.0",
+  "description": "E-commerce Store",
+  "keywords": [
+    "e-commerce",
+    "products",
+    "business"
+  ],
+  "license": "MIT",
+  "author": "Edwin Mwaniki",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.10",
+    "tailwindcss": "^4.1.10"
+  }
+}
