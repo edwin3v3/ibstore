@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The iBSTore - Best Place to Shop</title>
+    <link rel="stylesheet" href="./css/output.css">
+</head>
+<body>
+    <div class="container h-screen space-y-1.5 m-auto">
+        <!-- Set a header container - also has filter point -->
+        <section id="header" class="rounded-3xl bg-gray-400 p-3 my-3">
+            <h1 class="font-bold text-3xl pt-2 pb-0 px-2">
+                <span class="text-outline-white text-red-700">iBStore</span>
+            </h1>
+            <h3 class="font-medium text-[12px] top-[-15px] pt-0 pb-1 px-2">Best Place to Shop</h3>
+
+        </section>
+
+        <!-- First task: view 15 products from the store -->
+         <section id="main-body" class="rounded-2xl bg-gray-300 h-[80%] flex flex-col">
+            <div id="body-header" class="border-b-gray-400 border-bottom">
+                <h5 id="productsCount" class="font-light mx-3">
+                    <!-- The number of product items will be dynamically added here -->&nbsp;
+                </h5>
+            </div>
+            <div id="productsOuter" class="flex-grow overflow-y-scroll ">
+                <div id="products-grid" class="space-y-0.5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 m-4 my-3 mr-3">
+                    <!-- To remove grid: remove class grid grid-cols-3 gap-2 -->
+                    <!-- The space to dynamically list or grid of products -->
+                    
+                </div>    
+                <!-- Empty State -->
+                <div id="emptyState" class="text-center py-16">
+                    <div class="p-4 bg-gray-100 mx-auto mb-4 flex items-center justify-center">
+                        <i data-lucide="library" class="w-2 h-1 text-gray-400"></i>
+                        
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">No items Found</h3>
+                    <p class="text-gray-600">Do a fresh search to find products you want</p>
+                </div>
+
+            </div>
+
+         </section>
+
+
+    </div>
+</body>
+<script src="./src/index.js" type="module"></script>
+</html>
