@@ -5,16 +5,16 @@ let baseUrl = "https://fakestoreapi.com/products";
 // First Call to pull atleast 20 products - when the window loads
 // initial fetch declaration once the DOM is loaded
 document.addEventListener("DOMContentLoaded",() => {
-    // pulling some products from https://fakestoreapi.com/products
-    // limit the pull to 30 products
-    // https://fakestoreapi.com/products?limit=30
-    fetch(`${baseUrl}?limit=30`)
+    // pulling into DOM DATA All products from https://fakestoreapi.com/products
+
+    fetch(`${baseUrl}?`)
      .then(res => res.json())
      .then(products => {
         allProducts = products; // assign pulled products to global array
 
         // function to populate products on main-page
-        retrieveProducts(allProducts);
+        //retrieveProducts(allProducts);
+        renderInitialProducts(allProducts); // called on page load - loads only 100 products
         console.log(allProducts.length);
 
         
@@ -23,11 +23,23 @@ document.addEventListener("DOMContentLoaded",() => {
 
     
 
-
 });
 
+
+// search feature
+
+// basically slices the product list to 100
+
+function renderInitialProducts(products){
+    let initialProducts = products.slice(0,100);
+    console.log('what after slice: '+initialProducts.length);
+
+    renderProducts(initialProducts);
+    
+}
+
 // function to populate products on main-page
-function retrieveProducts(products){
+function renderProducts(products){
     
     console.log('The length '+products.length);
 
@@ -78,7 +90,7 @@ function createProductCard(product) {
 
         <div class="p-3  m-1  bg-white border-gray-200 border rounded-2xl">
             <div class = "flex space-x-1">
-                <div class="m-1"><img src="${product.image}" alt="" class="object-cover w-[150px]"></div>
+                <div class="m-1"><img src="${product.image}" alt="" loading="lazy" class="object-cover w-[150px]"></div>
                 <div class="p-1">
                     <a onclick="" class="my-2 mx-0.5 inline-block text-[18px] font-medium leading-tight cursor-pointer">${product.title}</a>
                     <p class = "my-2 mx-0.5 font-normal block text-[14px]">
