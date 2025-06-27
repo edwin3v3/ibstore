@@ -10,7 +10,7 @@ An E-Commerce Application built using JavaScript/ HTML/ Tailwind CSS. It impleme
 
 ## Screenshot
 
-![iBStore Screenshot](./iBStore.jpg)
+![iBStore Screenshot](./iBStore-screenshot.jpg)
 
 ## Features
 
