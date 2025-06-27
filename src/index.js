@@ -1,3 +1,22 @@
+/**Code flow in summary
+ * 
+ * Starts by declaration of important global variables
+ * Followed by implementation of 3 EventListeners 
+ * The main EventListener is DOMContentLoaded - the other two EventListeners are implemented under this main EventListener.
+ * 
+ * TWO MAJOR FUNCTIONS:
+ ***********************
+ * renderIntialProducts() and renderProducts()
+ * 
+ * renderIntitialProducts reduces the array size before initalLoad of the page & calls the renderProducts()
+ * 
+ * Search (searchProducts()) and Filter (applyAllFilter() functions do not user renderInitialProducs() because
+ * they do not need the array size to be reduced.
+ * 
+ * More explanation of the code is provided in the inline comments 
+ * 
+ */
+
 let allProducts = []; // define global empty array
 
 let searchedProducts = [];
