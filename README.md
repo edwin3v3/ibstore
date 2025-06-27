@@ -6,7 +6,7 @@
 
 ## Description
 
-An E-Commerce Application built using JavaScript/ HTML/ Tailwind CSS. It implements CRUD operations on JSON Server - using the fetch METHODS - POST, GET, UPDATE, DELETE. Users can view product items, view individual items, do search, filter and lastly do a simplified management of a cart
+An E-Commerce Application built using JavaScript/ HTML/ Tailwind CSS. It implements GET operations on JSON Server - using the fetch METHODS - GET. Users can view product items, do search and filter using category and min-max price.
 
 ## Screenshot
 
@@ -69,7 +69,9 @@ If you want to run the project locally, you'll need:
    npm install
    ```
 
-4. Open your browser and visit `http://localhost:5501` or whichever Live URL Your Editor provides
+4. Open your browser and visit `http://localhost:5501` or whichever Local live server Your Code Editor provides or your Local Setup has afforded you.
+   
+    **Note**: VS Code Editor does a good job of providing a Live Server
 
 ## Technologies Used
 
