@@ -28,7 +28,8 @@ An E-Commerce Application built using JavaScript/ HTML/ Tailwind CSS. It impleme
 
 ### View Live Site
 
-Visit the deployed application at: [Blog Post Manager](https://edwin3v3.github.io/Code-Challenge-Blog-Post-Manager/)
+Visit the deployed application at: [iBStore - Ecommerce 
+App](https://edwin3v3.github.io/ibstore/)
 
 ## Support and Contact Details
 
