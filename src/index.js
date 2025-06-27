@@ -1,4 +1,8 @@
 let allProducts = []; // define global empty array
+
+let searchedProducts = [];
+
+let filteredList; // define global empty array to hold items for search or filter 
 // define a baseUrl string to load the json api
 let baseUrl = "https://fakestoreapi.com/products";
 let debounceTimeout;
@@ -23,7 +27,7 @@ document.addEventListener("DOMContentLoaded",() => {
      .catch(error => (console.error("Error loading the products", error)));
 
 
-
+    // to check the search input
     document.getElementById('searchInput').addEventListener('input', () => {
         clearTimeout(debounceTimeout);
         debounceTimeout = setTimeout(() => {
@@ -32,8 +36,25 @@ document.addEventListener("DOMContentLoaded",() => {
             searchProducts(searchTerm);
         }, 300); // 300ms delay
     });
+    // To check the filter button
+    document.getElementById('filterBtn').addEventListener('click', () => {
+        // Get the search input value
+        const searchInput = document.getElementById('searchInput');
+        const searchTerm = searchInput.value.trim().toLowerCase();
 
-    
+        // Create a list to work with based on whether there's a search term
+        
+        if (searchTerm !== '') {
+            filteredList = allProducts.filter(product => {
+                return product.title.toLowerCase().includes(searchTerm);
+            });
+        } else {
+            filteredList = allProducts;
+        }
+        applyAllFilters(filteredList);
+
+    });
+   
 
 });
 
@@ -41,11 +62,35 @@ document.addEventListener("DOMContentLoaded",() => {
 // search feature
 function searchProducts(term) {
     console.log("Search begins "+term);
-  let searchedProducts = allProducts.filter(product =>
+    searchedProducts = allProducts.filter(product =>
     product.title.toLowerCase().includes(term.toLowerCase())
   );
   renderProducts(searchedProducts);
 }
+
+// Add filter features on pricing and category
+function applyAllFilters(filtered) {
+  let finalFiltered; // Use let so we can assign later
+
+  // Optional filters
+  const category = document.getElementById('categoryFilter')?.value;
+  const minPrice = parseFloat(document.getElementById('minPrice')?.value) || 0;
+  const maxPrice = parseFloat(document.getElementById('maxPrice')?.value) || Infinity;
+  console.log("the category: " + category);
+
+  if (category || minPrice || maxPrice !== Infinity) {
+    finalFiltered = filtered.filter(product => {
+      const matchCategory = !category || product.category === category;
+      const matchPrice = product.price >= minPrice && product.price <= maxPrice;
+      return matchCategory && matchPrice;
+    });
+    renderProducts(finalFiltered);
+    
+  } else {
+    renderProducts(filtered); // fallback when no filters are applied
+  }
+}
+
 
 
 // basically slices the product list to 100
