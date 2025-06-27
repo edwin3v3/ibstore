@@ -5,7 +5,7 @@ let searchedProducts = [];
 let filteredList; // define global empty array to hold items for search or filter 
 // define a baseUrl string to load the json api
 let baseUrl = "https://fakestoreapi.com/products";
-let debounceTimeout;
+let searchInputTimeout;
 
 // First Call to pull atleast 20 products - when the window loads
 // initial fetch declaration once the DOM is loaded
@@ -29,22 +29,25 @@ document.addEventListener("DOMContentLoaded",() => {
 
     // to check the search input
     document.getElementById('searchInput').addEventListener('input', () => {
-        clearTimeout(debounceTimeout);
-        debounceTimeout = setTimeout(() => {
+        clearTimeout(searchInputTimeout); // ensures theres no existing/pending setTimeout function call
+        searchInputTimeout = setTimeout(() => {
             const searchTerm = document.getElementById('searchInput').value;
-            //applyAllFilters();
-            searchProducts(searchTerm);
+            
+            searchProducts(searchTerm); // calls the search function with the final searchTerm
         }, 300); // 300ms delay
     });
-    // To check the filter button
+
+    // An EventListener to check the filter button
     document.getElementById('filterBtn').addEventListener('click', () => {
         // Get the search input value
         const searchInput = document.getElementById('searchInput');
         const searchTerm = searchInput.value.trim().toLowerCase();
 
+        // filter first checks whether there's any search terms using if() 
         // Create a list to work with based on whether there's a search term
         
         if (searchTerm !== '') {
+           
             filteredList = allProducts.filter(product => {
                 return product.title.toLowerCase().includes(searchTerm);
             });
@@ -85,7 +88,7 @@ function applyAllFilters(filtered) {
       return matchCategory && matchPrice;
     });
     renderProducts(finalFiltered);
-    
+
   } else {
     renderProducts(filtered); // fallback when no filters are applied
   }
