@@ -1,6 +1,7 @@
 let allProducts = []; // define global empty array
 // define a baseUrl string to load the json api
-let baseUrl = "https://fakestoreapi.com/products"; 
+let baseUrl = "https://fakestoreapi.com/products";
+let debounceTimeout;
 
 // First Call to pull atleast 20 products - when the window loads
 // initial fetch declaration once the DOM is loaded
@@ -21,12 +22,31 @@ document.addEventListener("DOMContentLoaded",() => {
      })
      .catch(error => (console.error("Error loading the products", error)));
 
+
+
+    document.getElementById('searchInput').addEventListener('input', () => {
+        clearTimeout(debounceTimeout);
+        debounceTimeout = setTimeout(() => {
+            const searchTerm = document.getElementById('searchInput').value;
+            //applyAllFilters();
+            searchProducts(searchTerm);
+        }, 300); // 300ms delay
+    });
+
     
 
 });
 
 
 // search feature
+function searchProducts(term) {
+    console.log("Search begins "+term);
+  let searchedProducts = allProducts.filter(product =>
+    product.title.toLowerCase().includes(term.toLowerCase())
+  );
+  renderProducts(searchedProducts);
+}
+
 
 // basically slices the product list to 100
 
